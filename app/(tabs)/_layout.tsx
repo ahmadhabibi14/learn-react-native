@@ -1,43 +1,52 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import React from "react";
+import { Tabs } from "expo-router";
+import { useClientOnlyValue } from "@/components/useClientOnlyValue";
+import { Icon } from "@/components/ui/icon";
+import { LucideIcon, Star } from "lucide-react-native";
+import { Home } from "lucide-react-native";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+function TabBarIcon({ icon, color }: { icon: LucideIcon; color: string }) {
+  return (
+    <Icon
+      as={icon}
+      stroke={color}
+      style={{ marginBottom: -3 }}
+    />
+  );
+}
 
+const homeTabIcon = () => <TabBarIcon icon={Home} color={"#125297"} />;
+const tab1TabIcon = () => <TabBarIcon icon={Star} color={"#125297"} />;
+const tab2TabIcon = () => <TabBarIcon icon={Star} color={"#125297"} />;
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+        // Disable the static render of the header on web
+        // to prevent a hydration error in React Navigation v6.
+        headerShown: useClientOnlyValue(false, false),
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: "Home",
+          tabBarIcon: ({ color }) => homeTabIcon(),
+        }}
+      />
+
+      <Tabs.Screen
+        name="history"
+        options={{
+          title: "History",
+          tabBarIcon: ({ color }) => tab1TabIcon(),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="profile"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: "Profile",
+          tabBarIcon: ({ color }) => tab2TabIcon(),
         }}
       />
     </Tabs>
