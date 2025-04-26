@@ -1,30 +1,35 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import { Icon } from "@/components/ui/icon";
-import { BarChart, Globe, Phone, Droplet, Flash, CreditCard, Play, More, PlugZap, Plug, Zap, CircleEllipsis, Gamepad2 } from "lucide-react-native";
+import {
+  BarChart, Globe, Phone, Droplet, Zap, CreditCard, CircleEllipsis, Gamepad2
+} from "lucide-react-native";
 import { VStack } from "@/components/ui/vstack";
+import { useRouter } from "expo-router";
 
 const menuItems = [
-  { icon: BarChart, title: "Pulse" },
-  { icon: Globe, title: "Internet" },
-  { icon: Phone, title: "Phone" },
-  { icon: Droplet, title: "Water" },
-  { icon: Zap, title: "Electricity" },
-  { icon: CreditCard, title: "Insurance" },
-  { icon: Gamepad2, title: "Game" },
-  { icon: CircleEllipsis, title: "More" },
+  { icon: BarChart, title: "Pulse", route: "/pulse" },
+  { icon: Globe, title: "Internet", route: "/internet" },
+  { icon: Phone, title: "Phone", route: "/phone" },
+  { icon: Droplet, title: "Water", route: "/water" },
+  { icon: Zap, title: "Electricity", route: "/electricity" },
+  { icon: CreditCard, title: "Insurance", route: "/insurance" },
+  { icon: Gamepad2, title: "Game", route: "/game" },
+  { icon: CircleEllipsis, title: "More", route: "/more" },
 ];
 
 const MenuGrid = () => {
+  const router = useRouter();
+
   return (
     <VStack style={styles.container}>
       {menuItems.map((item, index) => (
-        <VStack key={index} style={styles.menuItem}>
+        <Pressable key={index} onPress={() => router.push(item.route)} style={styles.menuItem}>
           <VStack style={styles.iconContainer}>
             <Icon as={item.icon} strokeWidth={2} stroke="#125297" style={styles.icon} />
           </VStack>
           <Text style={styles.text}>{item.title}</Text>
-        </VStack>
+        </Pressable>
       ))}
     </VStack>
   );

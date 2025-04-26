@@ -9,8 +9,8 @@ const Header = () => {
   return (
     <HStack className="justify-between items-center mt-5 mx-5">
       <VStack>
-        <Text className="text-sm">Assalamualaikum</Text>
-        <Text className="text-2xl font-bold">Karameena</Text>
+        <Text className="text-sm">Halo</Text>
+        <Text className="text-2xl font-bold">Habi</Text>
       </VStack>
       <Icon as={Bell} size="md" />
     </HStack>
