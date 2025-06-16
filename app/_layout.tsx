@@ -17,7 +17,7 @@ function RootLayoutNav() {
     <GluestackUIProvider>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="pulse" options={{ title: "Pulse" }} />
+        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
     </GluestackUIProvider>
