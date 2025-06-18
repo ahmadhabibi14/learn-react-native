@@ -5,9 +5,15 @@ import { Center } from "@/components/ui/center";
 import { useState } from "react";
 import { VStack } from "@/components/ui/vstack";
 import { FormControl } from "@/components/ui/form-control";
-import { EyeIcon, EyeOffIcon } from "@/components/ui/icon";
+import { EyeIcon, EyeOffIcon, CheckIcon } from "@/components/ui/icon";
 import { Heading } from "@/components/ui/heading";
 import { View } from "react-native";
+import {
+  Checkbox,
+  CheckboxIndicator,
+  CheckboxLabel,
+  CheckboxIcon,
+} from "@/components/ui/checkbox"
 
 export const options = {
   headerShown: false,
@@ -95,19 +101,19 @@ export default function Register() {
   };
 
   return (
-    <View className="overflow-auto py-7 bg-neutral-50 bg-opacity-80">
-      <Center>
+    <View className="overflow-auto py-7 bg-white bg-opacity-80 h-full flex items-center justify-center">
+      <Center className="w-full">
         <FormControl className="w-full px-5">
           <VStack space="xl">
-            <VStack>
-              <Heading className="text-typography-900 font-bold text-3xl text-center">
+            <VStack className="flex flex-col gap-1">
+              <Heading className="text-typography-900 font-bold text-3xl">
                 Register
               </Heading>
               <Text className="text-sm">Daftarkan diri anda sebagai agen </Text>
             </VStack>
             <div className="flex flex-col gap-3">
               <VStack space="xs">
-                <Text className="text-typography-500">Nama Lengkap</Text>
+                <Text className="text-typography-500 text-xs">Nama Lengkap</Text>
                 <Input className="min-w-[250px]">
                   <InputField
                     type="text"
@@ -117,7 +123,7 @@ export default function Register() {
                 </Input>
               </VStack>
               <VStack space="xs">
-                <Text className="text-typography-500">Username</Text>
+                <Text className="text-typography-500 text-xs">Username</Text>
                 <Input className="min-w-[250px]">
                   <InputField
                     type="text"
@@ -127,7 +133,7 @@ export default function Register() {
                 </Input>
               </VStack>
               <VStack space="xs">
-                <Text className="text-typography-500">Email</Text>
+                <Text className="text-typography-500 text-xs">Email</Text>
                 <Input className="min-w-[250px]">
                   <InputField
                     type="email"
@@ -137,7 +143,7 @@ export default function Register() {
                 </Input>
               </VStack>
               <VStack space="xs">
-                <Text className="text-typography-500">No. HP</Text>
+                <Text className="text-typography-500 text-xs">No. HP</Text>
                 <Input className="min-w-[250px]">
                   <InputField
                     type="text"
@@ -147,7 +153,7 @@ export default function Register() {
                 </Input>
               </VStack>
               <VStack space="xs">
-                <Text className="text-typography-500">Password</Text>
+                <Text className="text-typography-500 text-xs">Password</Text>
                 <Input className="text-center" onChangeText={setPassword}>
                   <InputField
                     type={showPassword ? "text" : "password"}
@@ -160,38 +166,39 @@ export default function Register() {
                 </Input>
               </VStack>
               <VStack space="xs">
-                <Text className="text-typography-500">Ulangi Password</Text>
+                <Text className="text-typography-500 text-xs">Ulangi Password</Text>
                 <Input className="text-center" onChangeText={setUlangiPassword}>
                   <InputField
                     type={showUlangiPassword ? "text" : "password"}
                     placeholder="rahasia#8299"
                     placeholderTextColor="#111"
                   />
-                  <InputSlot className="pr-3" onPress={handleStateUlangiPassword}>
+                  <InputSlot
+                    className="pr-3"
+                    onPress={handleStateUlangiPassword}
+                  >
                     <InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
                   </InputSlot>
                 </Input>
               </VStack>
-              <div className="mt-2 flex items-start">
-                <input
-                  type="checkbox"
-                  className="mt-1 mr-2"
-                  checked={isChecked}
-                  onChange={(e) => setIsChecked(e.target.checked)}
-                />
-                <label className="text-sm text-gray-700">
-                  Saya menyetujui{" "}
-                  <span className="font-semibold underline cursor-pointer">
-                    Kebijakan Privasi
-                  </span>{" "}
-                  aplikasi ini.
-                </label>
-              </div>
+							<Checkbox
+								size="sm"
+								isInvalid={false}
+								isDisabled={false}
+								className="flex flex-row gap-2 items-start my-3"
+								isChecked={isChecked}
+								onChange={(v) => setIsChecked(v)}
+							>
+								<CheckboxIndicator className="shrink-0">
+									<CheckboxIcon as={CheckIcon} />
+								</CheckboxIndicator>
+								<CheckboxLabel className="text-xs">Saya menyetujui <a className="underline" href="/privacy-policy">Kebijakan Privasi</a> aplikasi ini.</CheckboxLabel>
+							</Checkbox>
             </div>
-
             <Button className="w-full bg-neutral-900">
               <ButtonText className="text-neutral-50">Submit</ButtonText>
             </Button>
+						<Text className="text-sm text-center">Sudah punya akun ? <a className="underline" href="/login">Login</a></Text>
           </VStack>
         </FormControl>
       </Center>

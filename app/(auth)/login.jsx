@@ -18,10 +18,15 @@ export default function Login() {
     });
   };
   return (
-    <Center className="min-h-screen bg-neutral-50 bg-opacity-80">
+    <Center className="h-full bg-white">
       <FormControl className="w-full px-5">
         <VStack space="xl">
-          <Heading className="text-typography-900 font-bold text-3xl text-center">Login</Heading>
+          <VStack className="flex flex-col gap-1">
+            <Heading className="text-typography-900 font-bold text-3xl">
+              Login
+            </Heading>
+            <Text className="text-sm">Masuk ke akun anda</Text>
+          </VStack>
           <VStack space="xs">
             <Text className="text-typography-500">Username</Text>
             <Input className="min-w-[250px]">
@@ -40,6 +45,7 @@ export default function Login() {
           <Button className="w-full bg-neutral-900">
             <ButtonText className="text-neutral-50">Submit</ButtonText>
           </Button>
+          <Text className="text-sm text-center">Belum punya akun ? <a className="underline" href="/register">Register</a></Text>
         </VStack>
       </FormControl>
     </Center>
