@@ -2,7 +2,7 @@ import React from "react";
 import { Tabs } from "expo-router";
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
 import { Icon } from "@/components/ui/icon";
-import { LucideIcon, Star } from "lucide-react-native";
+import { LucideIcon, User, History } from "lucide-react-native";
 import { Home } from "lucide-react-native";
 
 function TabBarIcon({ icon, color }: { icon: LucideIcon; color: string }) {
@@ -16,8 +16,8 @@ function TabBarIcon({ icon, color }: { icon: LucideIcon; color: string }) {
 }
 
 const homeTabIcon = () => <TabBarIcon icon={Home} color={"#125297"} />;
-const tab1TabIcon = () => <TabBarIcon icon={Star} color={"#125297"} />;
-const tab2TabIcon = () => <TabBarIcon icon={Star} color={"#125297"} />;
+const tab1TabIcon = () => <TabBarIcon icon={History} color={"#125297"} />;
+const tab2TabIcon = () => <TabBarIcon icon={User} color={"#125297"} />;
 export default function TabLayout() {
   return (
     <Tabs
