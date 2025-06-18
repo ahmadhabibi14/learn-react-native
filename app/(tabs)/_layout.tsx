@@ -18,6 +18,7 @@ function TabBarIcon({ icon, color }: { icon: LucideIcon; color: string }) {
 const homeTabIcon = () => <TabBarIcon icon={Home} color={"#125297"} />;
 const tab1TabIcon = () => <TabBarIcon icon={History} color={"#125297"} />;
 const tab2TabIcon = () => <TabBarIcon icon={User} color={"#125297"} />;
+
 export default function TabLayout() {
   return (
     <Tabs

@@ -1,8 +1,8 @@
 import { View} from "react-native";
-import PhoneNumber from "./pulsa/PhoneNumber";
+import PhoneNumber from "../pulsa/PhoneNumber";
 import { Text } from "@/components/ui/text";
 import { HStack } from "@/components/ui/hstack";
-import PulseOptions from "./pulsa/PulseOptions";
+import PulseOptions from "../pulsa/PulseOptions";
 import { Button, ButtonText } from "@/components/ui/button";
 import { Div } from "@expo/html-elements";
 
